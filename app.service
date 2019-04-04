@@ -1,4 +1,4 @@
-# Setup app to run as a service (automatically on startup) 
+# Setup app to run as a service (automatically on startup)
 
 [Unit]
 Description=Java Application Service
@@ -6,7 +6,7 @@ After=mariadb.service
 Requires=mariadb.service
 
 [Service]
-User=ec2-user
+User=root
 # The configuration file application.properties should be here:
 WorkingDirectory=/srv/app
 # to limit JVM ram use -Xmx512m, or the value you prefer
