@@ -6,7 +6,8 @@ After=mariadb.service
 Requires=mariadb.service
 
 [Service]
-User=root
+# avoid running as root, apps that run on 80 must be run as root
+User=ec2-user
 # The configuration file application.properties should be here:
 WorkingDirectory=/srv/app
 # to limit JVM ram use -Xmx512m, or the value you prefer
