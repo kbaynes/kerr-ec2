@@ -8,8 +8,9 @@ Requires=mariadb.service
 [Service]
 User=ec2-user
 # The configuration file application.properties should be here:
-WorkingDirectory=/srv/app 
-ExecStart=/usr/bin/java -Xmx256m -jar /srv/app/app.jar
+WorkingDirectory=/srv/app
+# to limit JVM ram use -Xmx512m, or the value you prefer
+ExecStart=/usr/bin/java -jar /srv/app/app.jar
 SuccessExitStatus=143
 TimeoutStopSec=10
 Restart=on-failure
