@@ -1,0 +1,19 @@
+# Setup app to run as a service (automatically on startup) 
+
+[Unit]
+Description=Java Application Service
+After=mariadb.service
+Requires=mariadb.service
+
+[Service]
+User=ec2-user
+# The configuration file application.properties should be here:
+WorkingDirectory=/srv/app 
+ExecStart=/usr/bin/java -Xmx256m -jar /srv/app/app.jar
+SuccessExitStatus=143
+TimeoutStopSec=10
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
