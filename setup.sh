@@ -13,7 +13,7 @@ amazon-linux-extras enable corretto8
 yum install -y java-1.8.0-amazon-corretto-devel
 # setup the docker compose service definition
 mkdir /srv/app
-curl -o /srv/app/app.jar https://s3.amazonaws.com/acg-cors.kevinbaynes.com/public-jars/hello-0.0.1-SNAPSHOT.jar
+curl -o /srv/app/app.jar https://s3.amazonaws.com/acg-cors.kevinbaynes.com/public-jars/hello-0.0.3.jar
 # make the ec2 user the owner of the app service folder
 chown -R ec2-user: /srv/app
 # setup systemd unit file to run compose app as a service
