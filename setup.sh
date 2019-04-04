@@ -18,7 +18,13 @@ curl -o /srv/app/app.jar https://s3.amazonaws.com/acg-cors.kevinbaynes.com/publi
 chown -R ec2-user: /srv/app
 # map calls to port 80 on this machine to port 8080, where the java-app is listening
 # otherwise, if we try to run java-app on port 80, it must be run as root
-iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
+# download iptables mapping script
+curl -o /srv/app/setup-iptables.sh https://raw.githubusercontent.com/kbaynes/ec2-l2-java-mariadb/master/setup-iptables.sh
+# run the mapping
+/bin/bash /srv/app/setup-iptables.sh
+# set a cron to re-run the mapping on reboot (works on Amazon Linux 2)
+(crontab -l 2>/dev/null; echo "@reboot /srv/app/setup-iptables.sh") | crontab -
+# iptables are not persistent - see setup-iptables.sh
 # setup systemd unit file to run compose app as a service
 curl -o /etc/systemd/system/java-app.service https://raw.githubusercontent.com/kbaynes/ec2-l2-java-mariadb/master/app.service
 systemctl enable java-app
