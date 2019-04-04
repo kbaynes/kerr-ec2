@@ -2,8 +2,6 @@
 
 [Unit]
 Description=Java Application Service
-After=mariadb.service
-Requires=mariadb.service
 
 [Service]
 # avoid running as root, apps that run on 80 must be run as root

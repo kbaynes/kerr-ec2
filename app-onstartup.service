@@ -2,13 +2,11 @@
 
 [Unit]
 Description=Reset IP Tables for Java Application Service
-After=java-app.service
-Requires=java-app.service
 
 [Service]
 # must be root to setup iptables
 User=root
-ExecStart=iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
+ExecStart=/bin/bash /srv/app/app-onstartup.sh
 
 [Install]
 WantedBy=multi-user.target

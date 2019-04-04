@@ -14,6 +14,7 @@ yum install -y java-1.8.0-amazon-corretto-devel
 # setup the app location and download the jar - runs Tomcat on 8080
 mkdir /srv/app
 curl -o /srv/app/app.jar https://s3.amazonaws.com/acg-cors.kevinbaynes.com/public-jars/hello-0.0.4.jar
+curl -o /srv/app/app-onstartup.sh https://raw.githubusercontent.com/kbaynes/ec2-l2-java-mariadb/master/app-onstartup.sh
 # make the ec2 user the owner of the app service folder
 chown -R ec2-user: /srv/app
 # map calls to port 80 on this machine to port 8080, where the java-app is listening
