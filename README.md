@@ -2,7 +2,7 @@
 
 ## Goal
 
-The goal of this project is to demonstrate how to quickly launch an Amzazon Linux 2 AMI instance and configure it to run a Spring Boot executable JAR and MariaDB (MySQL).
+The goal of this project is to demonstrate how to quickly (less than 5 minutes) launch an Amzazon Linux 2 AMI instance and configure it to run a Spring Boot executable JAR and MariaDB (MySQL).
 
 ## Motivation
 
@@ -12,8 +12,7 @@ The motivation is to have tested code to use as a basis for quickly turning up s
 
 TODO: Replace the HelloWorld app with a simple DB application, then demonstrate how to back up the DB to S3 and then create new instances which pull the intial DB state from the S3 backups.
 
-Setup is performed via setup.sh, used during EC2 instance launching at Configure Instance Details > Advanced Details > User Data. The file can be uploaded directly, or copied and pasted as text into the input field.
-
+Setup is performed via setup.sh, used during EC2 instance launching at Configure Instance Details > Advanced Details > User Data. The file can be uploaded directly, or copied and pasted as text into the input field. This script updates the image, installs MariaDB and Java, and then sets up some services. [MariaDB](https://aws.amazon.com/rds/mariadb/) is used because it is a drop in replacement for MySQL and is easy to install on the Linux 2 AMI and provides a clear path to move the data layer to other AWS services such as [Aurora](https://aws.amazon.com/rds/aurora/). [Amazon Corretto](https://aws.amazon.com/corretto/) is used because it is a no-cost OpenJDK build used and supported by Amazon, and is easily installable.
 
 Setup downloads four files: app.service, app-onstartup.service, app-onstartup.sh, and the [HelloWorld](https://github.com/kbaynes/docker-springboot-helloworld) Spring Boot application jar. It creates a /srv/app directory and downloads all files into that directory.
 
@@ -42,7 +41,7 @@ By my tests, the server rebooted and the app was running again in about 30 secon
 
 Confirm that you can SSH into the instance by clicking the Connect button and using the given SSH command. Once connected, confirm that MariaDB is running by typing 'mysql' and that you get the mysql > prompt.
 
-If you have Security Group configured and default SSH keys configured, then it should be possible have a running applicaiton server in less than 5 minutes.
+If you have Security Group configured and default SSH keys configured, then it should be possible have a running applicaition server in less than 5 minutes.
 
 ### Notes
 
