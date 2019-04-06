@@ -1,0 +1,153 @@
+{
+	"info": {
+		"_postman_id": "4c92ec23-e9bb-4124-8f11-43374a8f6088",
+		"name": "NotesRepo",
+		"description": "Calls to the Spring REST Repository 'Notes' which is used in the GitHub project [ec2-l2-java-mariadb](https://github.com/kbaynes/ec2-l2-java-mariadb).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ListAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/notes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"notes"
+					]
+				},
+				"description": "Lists all notes"
+			},
+			"response": []
+		},
+		{
+			"name": "Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"note\":\"Life is a Garden. Dig it!\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/notes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"notes"
+					]
+				},
+				"description": "Create a new note"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete #6",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/notes/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"notes",
+						"6"
+					]
+				},
+				"description": "Deletes the record where ID = 6, if exists. "
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"note\":\"Life is like a box of chocolates: You never know what you gonna get!\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/notes/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"notes",
+						"7"
+					]
+				},
+				"description": "Updates note where ID = 6, if exists. Simply change the number in the url to choose which item to update."
+			},
+			"response": []
+		},
+		{
+			"name": "Get First Note",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/notes/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"notes",
+						"1"
+					]
+				},
+				"description": "Gets the node by ID = 1, if exist"
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"id": "89c32029-c5b1-437d-ab75-76c5f5de1245",
+			"key": "server_address",
+			"value": "localhost",
+			"type": "string"
+		}
+	]
+}
